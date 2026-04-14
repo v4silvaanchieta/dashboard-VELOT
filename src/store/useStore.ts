@@ -58,7 +58,7 @@ export const useStore = create<StoreState>((set, get) => ({
   loading: false,
   error: null,
 
-  dateFilter: "all",
+  dateFilter: "30days",
   pipelineFilter: "",
   utmSourceFilter: "",
   investimento: "",

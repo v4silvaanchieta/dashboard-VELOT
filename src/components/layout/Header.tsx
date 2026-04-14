@@ -1,28 +1,33 @@
 "use client";
 
-import { Menu } from "lucide-react";
+import Image from "next/image";
 
-interface HeaderProps {
-  onToggleSidebar: () => void;
-}
+const VELOT_LOGO_URL =
+  "https://github.com/v4silvaanchieta/dashboard-VELOT/blob/main/velot-cor-1.png?raw=true";
 
-export default function Header({ onToggleSidebar }: HeaderProps) {
+export default function Header() {
   return (
-    <header className="h-14 bg-gray-900 text-white flex items-center px-4 shrink-0 z-20">
-      <button
-        onClick={onToggleSidebar}
-        className="mr-4 p-1 rounded hover:bg-gray-700 lg:hidden"
-        aria-label="Toggle sidebar"
-      >
-        <Menu size={22} />
-      </button>
-      <div className="flex items-center gap-3">
-        <span className="text-xl font-bold tracking-tight text-orange-400">
-          VELOT
-        </span>
-        <span className="hidden sm:inline text-sm text-gray-400">
-          Dashboard de Vendas
-        </span>
+    <header className="h-16 bg-gray-900 border-b border-gray-800 flex items-center px-6 shrink-0 z-20">
+      <div className="flex items-center gap-4">
+        <div className="relative h-10 w-32">
+          <Image
+            src={VELOT_LOGO_URL}
+            alt="VELOT Motors"
+            fill
+            sizes="128px"
+            className="object-contain object-left"
+            priority
+            unoptimized
+          />
+        </div>
+        <div className="hidden md:flex items-center gap-2 pl-4 border-l border-gray-700">
+          <span className="text-sm font-medium text-gray-300">
+            Dashboard de Vendas
+          </span>
+          <span className="text-xs text-red-600 font-bold uppercase tracking-wider">
+            • Live
+          </span>
+        </div>
       </div>
     </header>
   );

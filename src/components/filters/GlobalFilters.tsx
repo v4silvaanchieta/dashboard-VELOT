@@ -4,7 +4,6 @@ import { useStore } from "@/store/useStore";
 import type { DateFilter } from "@/types/lead";
 
 const DATE_OPTIONS: { label: string; value: DateFilter }[] = [
-  { label: "Todos", value: "all" },
   { label: "Hoje", value: "today" },
   { label: "7 dias", value: "7days" },
   { label: "30 dias", value: "30days" },
@@ -25,11 +24,11 @@ export default function GlobalFilters() {
   const utmSources = uniqueUtmSources();
 
   return (
-    <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-4 mb-6">
+    <div className="bg-gray-800 rounded-lg border border-gray-700 p-4 mb-6">
       <div className="flex flex-wrap items-end gap-4">
         {/* Date filter */}
-        <div className="flex flex-col gap-1">
-          <label className="text-xs font-medium text-gray-500 uppercase tracking-wide">
+        <div className="flex flex-col gap-1.5">
+          <label className="text-xs font-semibold text-gray-400 uppercase tracking-wider">
             Período
           </label>
           <div className="flex gap-1">
@@ -37,10 +36,10 @@ export default function GlobalFilters() {
               <button
                 key={opt.value}
                 onClick={() => setDateFilter(opt.value)}
-                className={`px-3 py-1.5 text-sm rounded-md transition-colors ${
+                className={`px-3 py-1.5 text-sm rounded-md font-medium transition-colors ${
                   dateFilter === opt.value
-                    ? "bg-orange-500 text-white"
-                    : "bg-gray-100 text-gray-600 hover:bg-gray-200"
+                    ? "bg-red-600 text-white"
+                    : "bg-gray-700 text-gray-300 hover:bg-gray-600"
                 }`}
               >
                 {opt.label}
@@ -49,17 +48,17 @@ export default function GlobalFilters() {
           </div>
         </div>
 
-        {/* Pipeline filter */}
-        <div className="flex flex-col gap-1">
-          <label className="text-xs font-medium text-gray-500 uppercase tracking-wide">
-            Loja / Franquia
+        {/* Pipeline (Loja) filter */}
+        <div className="flex flex-col gap-1.5">
+          <label className="text-xs font-semibold text-gray-400 uppercase tracking-wider">
+            Loja
           </label>
           <select
             value={pipelineFilter}
             onChange={(e) => setPipelineFilter(e.target.value)}
-            className="h-9 px-3 text-sm border border-gray-300 rounded-md bg-white text-gray-700 focus:outline-none focus:ring-2 focus:ring-orange-400"
+            className="h-9 px-3 text-sm border border-gray-600 rounded-md bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-red-600 focus:border-transparent min-w-[180px]"
           >
-            <option value="">Todas</option>
+            <option value="">Todas as lojas</option>
             {pipelines.map((p) => (
               <option key={p} value={p}>
                 {p}
@@ -68,17 +67,17 @@ export default function GlobalFilters() {
           </select>
         </div>
 
-        {/* UTM Source filter */}
-        <div className="flex flex-col gap-1">
-          <label className="text-xs font-medium text-gray-500 uppercase tracking-wide">
-            Origem do Lead
+        {/* UTM Source (Origem) filter */}
+        <div className="flex flex-col gap-1.5">
+          <label className="text-xs font-semibold text-gray-400 uppercase tracking-wider">
+            Origem
           </label>
           <select
             value={utmSourceFilter}
             onChange={(e) => setUtmSourceFilter(e.target.value)}
-            className="h-9 px-3 text-sm border border-gray-300 rounded-md bg-white text-gray-700 focus:outline-none focus:ring-2 focus:ring-orange-400"
+            className="h-9 px-3 text-sm border border-gray-600 rounded-md bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-red-600 focus:border-transparent min-w-[180px]"
           >
-            <option value="">Todas</option>
+            <option value="">Todas as origens</option>
             {utmSources.map((s) => (
               <option key={s} value={s}>
                 {s}
